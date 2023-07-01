@@ -1,0 +1,17 @@
+.child-wrapre {
+  z-index: 999;
+}
+img {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+h3 {
+  font-size: 38px;
+  text-align: center;
+  margin-top: 150px;
+}
