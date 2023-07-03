@@ -2,11 +2,12 @@
  * @Author: heinan
  * @Date: 2023-06-25 17:17:33
  * @Last Modified by: heinan
- * @Last Modified time: 2023-07-03 14:00:12
+ * @Last Modified time: 2023-07-03 18:10:49
  */
 import { request } from '@/utils/request'
 import { API_CATEGARY_CONFIG } from '@/config/api/categary'
 import { CategaryManageType } from '@/interface/model/categary'
+import { LoadingDecorator } from '@/utils/loading'
 
 interface UseCategaryServiceInterface {
   firstCategaryList(): Promise<any>
@@ -40,6 +41,7 @@ export const UseCategaryService = (): UseCategaryServiceInterface => {
           return Promise.reject(err)
         })
     }
+    @LoadingDecorator(true)
     public getProductList(params: CategaryManageType.CategaryProductInterface) {
       const url = API_CATEGARY_CONFIG.getProductList()
       return request

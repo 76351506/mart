@@ -23,6 +23,7 @@
 import { computed, defineComponent, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { LayoutWhiteList } from '@/config'
+
 import LayoutHeader from '@/components/layout/header.vue'
 import LayoutFooter from '@/components/layout/footer.vue'
 

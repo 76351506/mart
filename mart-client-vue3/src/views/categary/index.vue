@@ -8,10 +8,13 @@
     <div class="categary-right">
       <van-tabs :ellipsis="false" v-model:active="secondActive" @change="onClickTab">
         <van-tab v-for="secondCategary in secondCategaryList" :key="secondCategary.sid" :title="secondCategary.s_text">
-          <div class="categary-empty" v-if="!productList.length">
+          <div v-if="loading" :style="{ margin: '15% auto', textAlign: 'center' }">
+            <van-loading></van-loading>
+          </div>
+          <div class="categary-empty" v-if="!productList.length && loading == false">
             <van-empty image="https://fastly.jsdelivr.net/npm/@vant/assets/custom-empty-image.png" image-size="80" description="暂无数据！" />
           </div>
-          <van-card v-else v-for="product in productList" :key="product.pid" :price="product.sale_price" :desc="product.desc" :title="product.pname" :thumb="product.imgUrl">
+          <van-card v-else v-for="product in productList" :key="product.pid" :price="product.sale_price" :desc="product.desc" :title="product.pname" :thumb="product.carousel">
             <template #tags>
               <van-space>
                 <van-tag plain type="primary">原价：{{ product.original_price }}</van-tag>
@@ -27,16 +30,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
+import { defineComponent, onMounted, ref, computed } from 'vue'
 import { UseCategaryService } from '@/api/categary'
 import { CategaryManageType } from '@/interface/model/categary'
 import { ProductManage } from '@/interface/model/product'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'Categary',
   setup() {
+    const store = useStore()
     const categaryService = UseCategaryService()
     const state = {
+      loading: computed(() => store.state.app.loading),
       firstActive: ref<number>(0),
       secondActive: ref<number>(0),
       fristFlag: ref<number>(0),
@@ -112,7 +118,7 @@ export default defineComponent({
     border-right: 1px solid #eee;
   }
   & > .categary-right {
-    padding-top: 16px;
+    padding: 16px;
     flex: 1;
     box-sizing: border-box;
     overflow: hidden;

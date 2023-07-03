@@ -1,11 +1,19 @@
 <template>
-  <div>this Mine page</div>
+  <div class="mine-wraper">
+    <div class="mine-avatar">
+      <van-image :width="120" :height="120" round fit="fill" :src="userInfo?.avatar">
+        <template v-slot:error>加载失败</template>
+      </van-image>
+      <p v-text="userInfo?.graph"></p>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { useStore } from 'vuex'
 import { defineComponent, onMounted, ref } from 'vue'
 import { useMineSerivice } from '@/api/mine'
+import { UserManageType } from '@/interface/model/user'
 
 export default defineComponent({
   name: 'Mine',
@@ -13,20 +21,20 @@ export default defineComponent({
     const store = useStore()
     const mineSerivice = useMineSerivice()
     const state = {
-      carouselList: ref<Array<string>>([]),
-      productList: ref<Array<string>>([])
+      userInfo: ref<UserManageType.UserInfoInterface>()
     }
     const getUserIdByToken = async () => {
-      const result = await mineSerivice.getUserIdByToken(store.state.user.token)
-      console.log(result)
+      const result = await mineSerivice.getUserIdByToken({ token: store.state.user.token })
+      store.dispatch({ type: 'user/SAVE_UID', payload: result.uid })
     }
     const getUserInfoById = async () => {
-      // const result = await mineSerivice.getUserInfoById({})
-      // state.productList.value = result.result
+      const result = await mineSerivice.getUserInfoById({ uid: store.state.user.uid })
+      console.log(result)
+      state.userInfo.value = result.data
     }
     onMounted(() => {
       getUserIdByToken()
-      // getUserInfoById()
+      getUserInfoById()
     })
     return {
       ...state
@@ -35,4 +43,19 @@ export default defineComponent({
 })
 </script>
 
-<style></style>
+<style lang="less">
+.mine-wraper {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: #dec;
+  .mine-avatar {
+    text-align: center;
+    & > p {
+      font-size: 14px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      word-break: break-all;
+    }
+  }
+}
+</style>
