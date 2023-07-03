@@ -1,7 +1,7 @@
 <template>
   <div class="mine-wraper">
     <div class="mine-avatar">
-      <van-image :width="120" :height="120" round fit="fill" :src="userInfo?.avatar">
+      <van-image :width="80" :height="80" fit="fill" :src="userInfo?.avatar">
         <template v-slot:error>加载失败</template>
       </van-image>
       <p v-text="userInfo?.graph"></p>
@@ -47,14 +47,20 @@ export default defineComponent({
 .mine-wraper {
   padding-top: 16px;
   padding-bottom: 16px;
-  background-color: #dec;
+  background-color: hsl(210, 85%, 77%);
   .mine-avatar {
     text-align: center;
+    margin-top: 25px;
     & > p {
       font-size: 14px;
       padding-top: 16px;
       padding-bottom: 16px;
       word-break: break-all;
+      font-weight: 700;
+    }
+    & img {
+      border: 3px solid #fff;
+      border-radius: 80px;
     }
   }
 }
