@@ -2,7 +2,7 @@
  * @Author: heinan
  * @Date: 2023-06-29 16:18:32
  * @Last Modified by: heinan
- * @Last Modified time: 2023-07-01 11:03:17
+ * @Last Modified time: 2023-07-03 18:34:32
  */
 import 'vant/lib/index.css'
 import {
@@ -29,7 +29,12 @@ import {
   Divider,
   Sidebar,
   SidebarItem,
-  Empty
+  Empty,
+  Skeleton,
+  SkeletonTitle,
+  SkeletonImage,
+  SkeletonAvatar,
+  SkeletonParagraph
 } from 'vant'
 
 export const initVant = function (app: any) {
@@ -57,4 +62,9 @@ export const initVant = function (app: any) {
   app.use(Sidebar)
   app.use(SidebarItem)
   app.use(Empty)
+  app.use(Skeleton)
+  app.use(SkeletonTitle)
+  app.use(SkeletonImage)
+  app.use(SkeletonAvatar)
+  app.use(SkeletonParagraph)
 }

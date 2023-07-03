@@ -1,6 +1,11 @@
 <template>
   <div>
-    <van-swipe class="carousel" autoplay="1000">
+    <van-skeleton :loading="loading" v-if="loading">
+      <template #template>
+        <van-skeleton-image style="width: 100%; height: 180px" />
+      </template>
+    </van-skeleton>
+    <van-swipe class="carousel" autoplay="1000" v-else>
       <van-swipe-item v-for="carousel in carouselList" :key="carousel.cid" indicator-color="white">
         <van-image :src="carousel.img">
           <template v-slot:loading>
@@ -10,6 +15,18 @@
       </van-swipe-item>
     </van-swipe>
     <van-divider />
+    <van-skeleton :loading="loading">
+      <template #template>
+        <div v-for="item in 5" :key="item" :style="{ display: 'flex', marginBottom: '16px', width: '100%' }">
+          <van-skeleton-image />
+          <div :style="{ flex: 1, marginLeft: '16px' }">
+            <van-skeleton-paragraph row-width="60%" />
+            <van-skeleton-paragraph />
+            <van-skeleton-paragraph />
+          </div>
+        </div>
+      </template>
+    </van-skeleton>
     <van-list v-model:loading="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
       <van-card v-for="product in productList" :key="product.pid" :price="product.sale_price" :desc="product.desc" :title="product.pname" :thumb="product.imgUrl">
         <template #tags>
@@ -77,6 +94,9 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
+.van-skeleton {
+  flex-direction: column;
+}
 .carousel {
   height: 180px;
   overflow: hidden;
