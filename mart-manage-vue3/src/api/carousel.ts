@@ -2,7 +2,7 @@
  * @Author: heinan
  * @Date: 2023-06-25 17:17:33
  * @Last Modified by: heinan
- * @Last Modified time: 2023-06-28 15:56:00
+ * @Last Modified time: 2023-07-03 09:53:33
  */
 import { request } from '@/utils/request'
 import { API_CAROUSEL } from '@/config/api/carousel'
@@ -11,8 +11,11 @@ import { LoadingDecorator } from '@/utils/loading'
 
 interface UseCarouselServiceInterface {
   add(params: CarouselManageType.CarouselForm): Promise<any>
+
   delete(params: { cid: string }): Promise<any>
+
   edit(params: CarouselManageType.CarouselForm): Promise<any>
+
   getCarouselList(): Promise<any>
 }
 
@@ -48,6 +51,7 @@ export const useCarouselService = (): UseCarouselServiceInterface => {
           return Promise.reject(err)
         })
     }
+
     // 轮播图编辑
     @LoadingDecorator(true)
     public async edit(params: CarouselManageType.CarouselForm) {
@@ -62,6 +66,7 @@ export const useCarouselService = (): UseCarouselServiceInterface => {
           return Promise.reject(err)
         })
     }
+
     // 轮播图列表
 
     @LoadingDecorator(true)
