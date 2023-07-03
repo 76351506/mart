@@ -5,9 +5,36 @@
  * @Last Modified time: 2023-07-01 11:03:17
  */
 import 'vant/lib/index.css'
-import { Form, Field, CellGroup, Button, Space, Tag, Toast, Notify, Col, Row, List, Tabbar, TabbarItem, Swipe, SwipeItem, Image as VanImage, Loading, Card, Divider } from 'vant'
+import {
+  Tab,
+  Tabs,
+  Form,
+  Field,
+  CellGroup,
+  Button,
+  Space,
+  Tag,
+  Toast,
+  Notify,
+  Col,
+  Row,
+  List,
+  Tabbar,
+  TabbarItem,
+  Swipe,
+  SwipeItem,
+  Image as VanImage,
+  Loading,
+  Card,
+  Divider,
+  Sidebar,
+  SidebarItem,
+  Empty
+} from 'vant'
 
 export const initVant = function (app: any) {
+  app.use(Tab)
+  app.use(Tabs)
   app.use(Form)
   app.use(Field)
   app.use(CellGroup)
@@ -27,4 +54,7 @@ export const initVant = function (app: any) {
   app.use(Loading)
   app.use(Card)
   app.use(Divider)
+  app.use(Sidebar)
+  app.use(SidebarItem)
+  app.use(Empty)
 }

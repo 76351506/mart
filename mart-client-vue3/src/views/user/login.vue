@@ -21,6 +21,7 @@
 </template>
 
 <script lang="ts">
+import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import { defineComponent, ref } from 'vue'
 import { UserManageType } from '@/interface/model/user'
@@ -31,6 +32,7 @@ export default defineComponent({
   name: 'UserLogin',
   props: {},
   setup() {
+    const store = useStore()
     const router = useRouter()
     const userSerivice = useUserSerivice()
     const state = {
@@ -38,7 +40,8 @@ export default defineComponent({
     }
     const onSubmit = async () => {
       const result = await userSerivice.login(state.formState.value)
-      console.log(result)
+      store.dispatch({ type: 'user/SAVE_TOEKN', payload: result.token })
+
       if (result.code == 1) {
         showToast({
           type: 'success',

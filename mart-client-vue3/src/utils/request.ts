@@ -43,10 +43,10 @@ request.interceptors.response.use(
       case 401:
         showToast({
           type: 'fail',
-          message: '暂无数据！',
+          message: '没有权限信息',
           onClose() {
-            const pathUrl = location.href.split('/')
-            window.location.href = `/user/login?redirect=${encodeURIComponent('/' + pathUrl[3])}`
+            // const pathUrl = location.href.split('/')
+            // window.location.href = `/user/login?redirect=${encodeURIComponent('/' + pathUrl[3])}`
           }
         })
         break

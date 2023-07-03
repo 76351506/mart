@@ -28,6 +28,7 @@
 import { defineComponent, onMounted, ref } from 'vue'
 import { useHomeSerivice } from '@/api/home'
 import { HomeManageType } from '@/interface/model/home'
+import { ProductManage } from '@/interface/model/product'
 
 export default defineComponent({
   name: 'Home',
@@ -38,7 +39,7 @@ export default defineComponent({
       finished: ref(false),
       error: ref(false),
       carouselList: ref<Array<HomeManageType.CarouselInterface>>([]),
-      productList: ref<Array<HomeManageType.ProductInterface>>([]),
+      productList: ref<Array<ProductManage.ProductInterface>>([]),
       pagesize: ref<number>(10),
       pagecount: ref<number>(1)
     }
@@ -46,7 +47,6 @@ export default defineComponent({
       const result = await homeSerivice.getCarouselList({})
       state.carouselList.value = result.result
     }
-    // const getProductList = async () => {}
     const onLoad = async () => {
       state.loading.value = true
       const result = await homeSerivice
@@ -67,7 +67,6 @@ export default defineComponent({
     }
     onMounted(() => {
       getCarouselList()
-      // getProductList()
     })
     return {
       ...state,

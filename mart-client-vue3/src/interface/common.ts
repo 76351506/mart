@@ -17,4 +17,8 @@ export namespace BasicManageType {
     result?: any
     data?: any
   }
+  export interface PaginationInterface {
+    pagesize: number
+    pagecount: number
+  }
 }

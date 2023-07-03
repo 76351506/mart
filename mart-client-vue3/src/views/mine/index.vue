@@ -3,28 +3,30 @@
 </template>
 
 <script lang="ts">
+import { useStore } from 'vuex'
 import { defineComponent, onMounted, ref } from 'vue'
-import { useHomeSerivice } from '@/api/home'
+import { useMineSerivice } from '@/api/mine'
 
 export default defineComponent({
   name: 'Mine',
   setup() {
-    const homeSerivice = useHomeSerivice()
+    const store = useStore()
+    const mineSerivice = useMineSerivice()
     const state = {
       carouselList: ref<Array<string>>([]),
       productList: ref<Array<string>>([])
     }
-    const getCarouselList = async () => {
-      const result = await homeSerivice.getCarouselList({})
-      state.carouselList.value = result.result
+    const getUserIdByToken = async () => {
+      const result = await mineSerivice.getUserIdByToken(store.state.user.token)
+      console.log(result)
     }
-    const getProductList = async () => {
-      const result = await homeSerivice.getGoodsList({})
-      state.productList.value = result.result
+    const getUserInfoById = async () => {
+      // const result = await mineSerivice.getUserInfoById({})
+      // state.productList.value = result.result
     }
     onMounted(() => {
-      getCarouselList()
-      getProductList()
+      getUserIdByToken()
+      // getUserInfoById()
     })
     return {
       ...state
