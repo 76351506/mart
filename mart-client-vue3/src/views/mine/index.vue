@@ -1,10 +1,23 @@
 <template>
-  <div class="mine-wraper">
+  <div class="mine-wraper" v-if="userInfo">
     <div class="mine-avatar">
       <van-image :width="80" :height="80" fit="fill" :src="userInfo?.avatar">
         <template v-slot:error>加载失败</template>
       </van-image>
       <p v-text="userInfo?.graph"></p>
+    </div>
+
+    <div class="mine-list">
+      <van-cell-group title="功能">
+        <van-cell title="个人隐私" is-link to="index" />
+        <van-cell title="协议条款" is-link to="index" />
+        <van-cell title="关于我们" is-link to="index" />
+      </van-cell-group>
+      <van-cell-group title="系统">
+        <van-cell title="清除缓存" is-link to="index" />
+        <van-cell title="忘记密码" is-link to="index" />
+        <van-cell title="退出登录" is-link to="index" />
+      </van-cell-group>
     </div>
   </div>
 </template>
@@ -25,16 +38,17 @@ export default defineComponent({
     }
     const getUserIdByToken = async () => {
       const result = await mineSerivice.getUserIdByToken({ token: store.state.user.token })
-      store.dispatch({ type: 'user/SAVE_UID', payload: result.uid })
+      if (result.code) {
+        await store.dispatch({ type: 'user/SAVE_UID', payload: result.uid })
+        getUserInfoById()
+      }
     }
     const getUserInfoById = async () => {
       const result = await mineSerivice.getUserInfoById({ uid: store.state.user.uid })
-      console.log(result)
       state.userInfo.value = result.data
     }
     onMounted(() => {
       getUserIdByToken()
-      getUserInfoById()
     })
     return {
       ...state
@@ -45,12 +59,14 @@ export default defineComponent({
 
 <style lang="less">
 .mine-wraper {
-  padding-top: 16px;
-  padding-bottom: 16px;
-  background-color: hsl(210, 85%, 77%);
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+
   .mine-avatar {
     text-align: center;
-    margin-top: 25px;
+    padding-top: 25px;
+    background-color: hsl(210, 85%, 77%);
     & > p {
       font-size: 14px;
       padding-top: 16px;

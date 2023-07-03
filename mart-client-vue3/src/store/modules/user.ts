@@ -2,7 +2,7 @@
  * @Author: heinan
  * @Date: 2023-06-29 10:59:04
  * @Last Modified by: heinan
- * @Last Modified time: 2023-07-03 17:16:24
+ * @Last Modified time: 2023-07-03 19:11:01
  */
 import { getStorage, setStorage } from '@/utils'
 import { IPayload, CommitInterface } from '@/interface/store'
@@ -18,11 +18,11 @@ export default {
   },
   getters: {},
   mutations: {
-    [UPDATE_TOEKN](state: UserStoreManageType.IUserState, { payload }: IPayload) {
+    [UPDATE_TOEKN](state: UserStoreManageType.IUserState, payload: string) {
       state.token = payload
     },
-    [UPDATE_UID](state: UserStoreManageType.IUserState, { payload }: IPayload) {
-      state.token = payload
+    [UPDATE_UID](state: UserStoreManageType.IUserState, payload: string) {
+      state.uid = payload
     }
   },
   actions: {

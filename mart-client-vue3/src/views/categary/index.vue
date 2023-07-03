@@ -12,7 +12,7 @@
             <van-loading></van-loading>
           </div>
           <div class="categary-empty" v-if="!productList.length && loading == false">
-            <van-empty image="https://fastly.jsdelivr.net/npm/@vant/assets/custom-empty-image.png" image-size="80" description="暂无数据！" />
+            <van-empty image="https://fastly.jsdelivr.net/npm/@vant/assets/custom-empty-image.png" image-size="60" description="暂无数据！" />
           </div>
           <van-card v-else v-for="product in productList" :key="product.pid" :price="product.sale_price" :desc="product.desc" :title="product.pname" :thumb="product.carousel">
             <template #tags>

@@ -2,7 +2,7 @@
  * @Author: heinan
  * @Date: 2023-06-29 16:18:32
  * @Last Modified by: heinan
- * @Last Modified time: 2023-07-03 18:34:32
+ * @Last Modified time: 2023-07-03 19:00:36
  */
 import 'vant/lib/index.css'
 import {
@@ -10,6 +10,7 @@ import {
   Tabs,
   Form,
   Field,
+  Cell,
   CellGroup,
   Button,
   Space,
@@ -46,6 +47,8 @@ export const initVant = function (app: any) {
   app.use(Button)
   app.use(Space)
   app.use(Tag)
+  app.use(Cell)
+  app.use(CellGroup)
   app.use(Toast)
   app.use(Notify)
   app.use(Col)
