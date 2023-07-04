@@ -2,7 +2,7 @@
  * @Author: heinan
  * @Date: 2023-06-25 17:17:33
  * @Last Modified by: heinan
- * @Last Modified time: 2023-07-03 09:53:33
+ * @Last Modified time: 2023-07-04 16:51:00
  */
 import { request } from '@/utils/request'
 import { API_CAROUSEL } from '@/config/api/carousel'
@@ -11,11 +11,8 @@ import { LoadingDecorator } from '@/utils/loading'
 
 interface UseCarouselServiceInterface {
   add(params: CarouselManageType.CarouselForm): Promise<any>
-
   delete(params: { cid: string }): Promise<any>
-
   edit(params: CarouselManageType.CarouselForm): Promise<any>
-
   getCarouselList(): Promise<any>
 }
 

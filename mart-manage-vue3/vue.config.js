@@ -2,22 +2,17 @@
  * @Author: heinan
  * @Date: 2023-06-20 11:21:29
  * @Last Modified by: heinan
- * @Last Modified time: 2023-07-04 15:51:53
+ * @Last Modified time: 2023-07-04 18:22:29
  */
 const { defineConfig } = require('@vue/cli-service')
-const { VantResolver } = require('unplugin-vue-components/resolvers')
-const ComponentsPlugin = require('unplugin-vue-components/webpack')
 const dynamicProxyName = process.env.VUE_APP_API_URL
+const createThemeColorReplacerPlugin = require('./src/theme/theme-color-replacer.plugin.config')
 
 module.exports = defineConfig({
   transpileDependencies: true,
   runtimeCompiler: true,
   configureWebpack: {
-    plugins: [
-      ComponentsPlugin({
-        resolvers: [VantResolver()]
-      })
-    ]
+    plugins: [createThemeColorReplacerPlugin()]
   },
   css: {
     loaderOptions: {

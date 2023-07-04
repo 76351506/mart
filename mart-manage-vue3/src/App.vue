@@ -17,4 +17,5 @@ export default defineComponent({
 <style lang="less">
 @import url('~@/assets/css/reset.less');
 @import url('~@/assets/css/common.less');
+@import url('~@/assets/css/theme.less');
 </style>

@@ -2,7 +2,7 @@
  * @Author: heinan
  * @Date: 2023-06-24 16:19:28
  * @Last Modified by: heinan
- * @Last Modified time: 2023-07-04 16:10:19
+ * @Last Modified time: 2023-07-04 19:04:44
  */
 import { IPayload } from '@/interface/store'
 import { AppManageType } from '@/interface/model/app'
@@ -13,7 +13,7 @@ interface IAPPSTATE {
   breadcrumbMap: Array<AppManageType.BreadcrumbInterface>
   openKeys: Array<AppManageType.MenuItem>
   selectedKeys: Array<AppManageType.MenuItem>
-  theme: boolean
+  themeType: boolean
 }
 
 export default {
@@ -22,12 +22,12 @@ export default {
     loading: false,
     breadcrumbMap: [],
     openKeys: JSON.parse(getStorage('OPEN_KEYS') as string) || [],
-    theme: getStorage('THEME') || false
+    themeType: getStorage('THEME_TYPE') ? true : false
   },
   mutations: {
-    UPDATE_THEME(state: IAPPSTATE, { payload }: IPayload): void {
-      state.theme = payload
-      setStorage('THEME', JSON.stringify(payload))
+    UPDATE_THEME_TYPE(state: IAPPSTATE, { payload }: IPayload): void {
+      state.themeType = payload
+      setStorage('THEME_TYPE', payload)
     },
     UPDATE_SELECTED_KEYS(state: IAPPSTATE, { payload }: IPayload): void {
       state.selectedKeys = payload

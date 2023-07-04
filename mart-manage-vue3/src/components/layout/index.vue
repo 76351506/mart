@@ -2,8 +2,8 @@
   <div v-if="route.path == '/user/login' || route.path == '/user/registry'">
     <router-view />
   </div>
-  <a-layout style="min-height: 100vh" v-else>
-    <a-layout-sider theme="dark" v-model:collapsed="collapsed">
+  <a-layout style="min-height: 100vh" v-else :class="themeType ? 'theme-light' : 'theme-dark'">
+    <a-layout-sider v-model:collapsed="collapsed">
       <div class="logo">
         <img :src="require('@/assets/images/logo.png')" alt="" srcset="" />
       </div>
@@ -53,7 +53,8 @@ export default defineComponent({
     const userService = useUserService()
     const state = {
       loading: computed(() => store.state.app.loading),
-      collapsed: ref<boolean>(false)
+      collapsed: ref<boolean>(false),
+      themeType: computed(() => store.state.app.themeType)
     }
     const onSignOut = () => {
       store.dispatch({ type: 'user/RESET_TOKEN' })
@@ -87,7 +88,6 @@ export default defineComponent({
   min-height: 100vh !important;
 }
 .logo {
-  // margin: 16px;
   padding: 16px;
   & > img {
     height: 85%;
@@ -95,12 +95,18 @@ export default defineComponent({
   }
 }
 
-.site-layout .site-layout-background {
-  background: #fff;
+.theme-dark {
+  .ant-layout-sider,
+  .ant-layout-header {
+    background-color: none;
+  }
 }
-// [data-theme='dark'] .site-layout .site-layout-background {
-//   background: #141414;
-// }
+.theme-light {
+  .ant-layout-sider,
+  .ant-layout-header {
+    background-color: #fff;
+  }
+}
 .slider-collapsed {
   text-align: left;
   padding-left: 16px;

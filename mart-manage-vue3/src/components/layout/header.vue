@@ -2,7 +2,14 @@
   <a-layout-header>
     <div class="text-right pr15">
       <a-space>
-        <a-switch checked-children="日" un-checked-children="夜" v-model:checked="checked" @change="onThemeChange" />
+        <a-tooltip class="theme-color-selector" v-for="color in colorList" :key="color.key">
+          <template #title>{{ color.key }}</template>
+          <a-tag :color="color.color" @click="changThemeColor(color.color)">
+            <CheckOutlined v-if="color.color == primaryColor" />
+          </a-tag>
+        </a-tooltip>
+        {{ themeType }}
+        <a-switch checked-children="日" un-checked-children="夜" v-model:checked="themeType" @change="onThemeChange" />
         <a-dropdown>
           <a class="ant-dropdown-link" @click.prevent>
             <a-avatar>
@@ -34,6 +41,7 @@ import { useStore } from 'vuex'
 import { computed, defineComponent, ref } from 'vue'
 import { UserOutlined } from '@ant-design/icons-vue'
 import { darkThemeSwitch } from '@/utils/theme'
+import { colorList, updateTheme } from '@/theme/settingConfig'
 
 export default defineComponent({
   name: 'LayoutHeader',
@@ -43,18 +51,28 @@ export default defineComponent({
   setup(props, { emit }) {
     const store = useStore()
     const state = {
-      checked: ref<boolean>(true),
+      primaryColor: ref(''),
+      colorList: ref(colorList),
+
       avatar: computed(() => store.state.user.userInfo.avatar)
     }
+    const themeType = computed(() => store.state.app.themeType)
     const onThemeChange = (value: boolean) => {
-      // store.commit({ type: 'app/UPDATE_THEME', payload: value })
+      console.log(value)
+      store.commit({ type: 'app/UPDATE_THEME_TYPE', payload: value })
       darkThemeSwitch()
+    }
+    const changThemeColor = (color: string) => {
+      state.primaryColor.value = color
+      updateTheme(color)
     }
     return {
       ...state,
       store,
+      themeType,
       emit,
-      onThemeChange
+      onThemeChange,
+      changThemeColor
     }
   }
 })
@@ -67,5 +85,10 @@ a,
 }
 .ant-image img {
   height: 100% !important;
+}
+.theme-color-selector {
+  display: block;
+  width: 25px;
+  height: 25px;
 }
 </style>
