@@ -53,5 +53,6 @@ export default defineComponent({
 .line {
   height: 500px;
   width: 500px;
+  background-color: #fff;
 }
 </style>

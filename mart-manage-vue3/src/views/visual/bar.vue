@@ -131,5 +131,6 @@ export default defineComponent({
 .bar {
   width: 500px;
   height: 500px;
+  background-color: #fff;
 }
 </style>
