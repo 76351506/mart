@@ -97,19 +97,19 @@ const menuConfig: Array<AppManageType.MenuItemForSider> = [
       {
         icon: 'PieChartOutlined',
         key: 'pieCharts',
-        name: 'PieCharts',
+        name: 'VisualPieCharts',
         title: '饼图'
       },
       {
         icon: 'BarChartOutlined',
         key: 'barCharts',
-        name: 'BarCharts',
+        name: 'VisualBarCharts',
         title: '柱状图'
       },
       {
         icon: 'LineChartOutlined',
         key: 'lineCharts',
-        name: 'LineCharts',
+        name: 'VisualLineCharts',
         title: '折线图'
       }
     ]

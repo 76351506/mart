@@ -69,5 +69,24 @@ export default [
     name: 'Home',
     meta: { requireAuth: true },
     component: () => import(/* webpackChunkName: "Home" */ '@/views/home/index.vue')
+  },
+
+  {
+    path: '/visual/pie',
+    name: 'VisualPieCharts',
+    meta: { requireAuth: true },
+    component: () => import(/* webpackChunkName: "Home" */ '@/views/visual/pie.vue')
+  },
+  {
+    path: '/visual/bar',
+    name: 'VisualBarCharts',
+    meta: { requireAuth: true },
+    component: () => import(/* webpackChunkName: "Home" */ '@/views/visual/bar.vue')
+  },
+  {
+    path: '/visual/line',
+    name: 'VisualLineCharts',
+    meta: { requireAuth: true },
+    component: () => import(/* webpackChunkName: "Home" */ '@/views/visual/line.vue')
   }
 ] as Array<RouteRecordRaw>
