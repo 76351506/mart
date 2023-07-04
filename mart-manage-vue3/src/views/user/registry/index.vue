@@ -6,14 +6,22 @@
   </div>
 </template>
 
-<script lang="ts" setup name="user-registry">
-// user-registry
-import { ref } from 'vue'
-const state = {
-  num: ref<number>(123),
-  str: ref<string>('123'),
-  arr: ref<number[]>([1, 2, 3, 4])
-}
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+
+export default defineComponent({
+  name: 'UserRegistry',
+  setup() {
+    const state = {
+      num: ref<number>(123),
+      str: ref<string>('123'),
+      arr: ref<number[]>([1, 2, 3, 4])
+    }
+    return {
+      ...state
+    }
+  }
+})
 </script>
 
 <style></style>

@@ -29,7 +29,7 @@ export default [
   UserList,
   UserManage,
   UserLogin,
-  UserRegistry,
+  // UserRegistry,
   UserIdentity,
   {
     path: '/carousel',
