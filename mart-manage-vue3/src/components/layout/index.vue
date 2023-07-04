@@ -16,6 +16,7 @@
       <LayoutHeader @onQuit="onSignOut"></LayoutHeader>
       <a-layout-content style="margin: 0 16px">
         <Breadcrumb></Breadcrumb>
+        <a-divider />
         <div :style="{ marginTop: '16px', padding: '24px', minHeight: '360px' }">
           <a-spin :spinning="loading" size="large">
             <router-view />

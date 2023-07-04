@@ -27,7 +27,6 @@ export default defineComponent({
 
 <style lang="less">
 .breadcrumb-wraper {
-  background-color: #fff;
   padding: 16px !important;
   margin-top: 16px !important;
 }
