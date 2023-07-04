@@ -3,9 +3,12 @@
     <router-view />
   </div>
   <a-layout style="min-height: 100vh" v-else>
-    <a-layout-sider theme="dark" v-model:collapsed="collapsed" collapsible>
+    <a-layout-sider theme="dark" v-model:collapsed="collapsed">
       <div class="logo">
         <img :src="require('@/assets/images/logo.png')" alt="" srcset="" />
+      </div>
+      <div :class="!collapsed ? 'slider-collapsed' : 'slider-collapsed small'">
+        <MenuUnfoldOutlined @click="onCollapsed" style="color: #fff; font-size: 18px" />
       </div>
       <LayoutSider></LayoutSider>
     </a-layout-sider>
@@ -33,12 +36,15 @@ import LayoutHeader from './header.vue'
 import Breadcrumb from './breadcrumb.vue'
 import { useUserService } from '@/api/user'
 import { getStorage } from '@/utils/common'
+import { MenuUnfoldOutlined } from '@ant-design/icons-vue'
+
 export default defineComponent({
   name: 'Layout',
   components: {
     Breadcrumb,
     LayoutSider,
-    LayoutHeader
+    LayoutHeader,
+    MenuUnfoldOutlined
   },
   setup() {
     const store = useStore()
@@ -58,13 +64,17 @@ export default defineComponent({
       const userInfo = await userService.getUserInfoById({ uid: store.state.user.uid })
       store.commit({ type: 'user/UPDATE_USER_INFO', payload: userInfo.data })
     }
+    const onCollapsed = () => {
+      state.collapsed.value = !state.collapsed.value
+    }
     onMounted(() => {
       init()
     })
     return {
       ...state,
       route,
-      onSignOut
+      onSignOut,
+      onCollapsed
     }
   }
 })
@@ -77,7 +87,7 @@ export default defineComponent({
   min-height: 100vh !important;
 }
 .logo {
-  margin: 16px;
+  // margin: 16px;
   padding: 16px;
   & > img {
     height: 85%;
@@ -90,5 +100,13 @@ export default defineComponent({
 }
 [data-theme='dark'] .site-layout .site-layout-background {
   background: #141414;
+}
+.slider-collapsed {
+  text-align: left;
+  padding-left: 16px;
+  &.small {
+    text-align: center;
+    padding-left: 0;
+  }
 }
 </style>

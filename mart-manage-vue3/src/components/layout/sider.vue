@@ -1,5 +1,4 @@
 <template>
-  {{ openKeys }}
   <a-menu :theme="'dark'" :openKeys="openKeys" mode="inline">
     <!-- 自行遍历组件 -->
     <!-- <a-sub-menu un-checked-children="Light" v-for="menu in menuConfig" :key="menu.key">
