@@ -16,7 +16,7 @@
       <LayoutHeader @onQuit="onSignOut"></LayoutHeader>
       <a-layout-content style="margin: 0 16px">
         <Breadcrumb></Breadcrumb>
-        <div :style="{ marginTop: '16px', padding: '24px', background: '#fff', minHeight: '360px' }">
+        <div :style="{ marginTop: '16px', padding: '24px', minHeight: '360px' }">
           <a-spin :spinning="loading" size="large">
             <router-view />
           </a-spin>
@@ -98,9 +98,9 @@ export default defineComponent({
 .site-layout .site-layout-background {
   background: #fff;
 }
-[data-theme='dark'] .site-layout .site-layout-background {
-  background: #141414;
-}
+// [data-theme='dark'] .site-layout .site-layout-background {
+//   background: #141414;
+// }
 .slider-collapsed {
   text-align: left;
   padding-left: 16px;

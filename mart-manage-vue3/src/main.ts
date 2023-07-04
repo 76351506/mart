@@ -2,14 +2,15 @@
  * @Author: heinan
  * @Date: 2023-06-24 17:04:42
  * @Last Modified by: heinan
- * @Last Modified time: 2023-06-27 15:14:59
+ * @Last Modified time: 2023-07-04 16:21:51
  */
+// @ts-nocheck
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
+import 'ant-design-vue/dist/antd.less'
 
 const app = createApp(App)
 app.use(Antd)

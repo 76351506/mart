@@ -2,7 +2,7 @@
  * @Author: heinan
  * @Date: 2023-06-20 11:21:29
  * @Last Modified by: heinan
- * @Last Modified time: 2023-07-01 18:29:23
+ * @Last Modified time: 2023-07-04 15:51:53
  */
 const { defineConfig } = require('@vue/cli-service')
 const { VantResolver } = require('unplugin-vue-components/resolvers')
@@ -18,6 +18,15 @@ module.exports = defineConfig({
         resolvers: [VantResolver()]
       })
     ]
+  },
+  css: {
+    loaderOptions: {
+      less: {
+        lessOptions: {
+          javascriptEnabled: true
+        }
+      }
+    }
   },
   devServer: {
     // 配置host
