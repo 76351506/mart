@@ -38,6 +38,7 @@ import Breadcrumb from './breadcrumb.vue'
 import { useUserService } from '@/api/user'
 import { getStorage } from '@/utils/common'
 import { MenuUnfoldOutlined } from '@ant-design/icons-vue'
+import { darkThemeSwitch } from '@/utils/theme'
 
 export default defineComponent({
   name: 'Layout',
@@ -65,6 +66,7 @@ export default defineComponent({
       if (getStorage('uid') == null || getStorage('uid') == '') return
       const userInfo = await userService.getUserInfoById({ uid: store.state.user.uid })
       store.commit({ type: 'user/UPDATE_USER_INFO', payload: userInfo.data })
+      darkThemeSwitch(state.themeType.value)
     }
     const onCollapsed = () => {
       state.collapsed.value = !state.collapsed.value

@@ -2,7 +2,7 @@
  * @Author: heinan
  * @Date: 2023-06-20 11:35:35
  * @Last Modified by: heinan
- * @Last Modified time: 2023-07-01 17:20:56
+ * @Last Modified time: 2023-07-04 23:07:45
  */
 import { BASE_URL } from '@/config/common'
 import { AppManageType } from '@/interface/model/app'
@@ -25,10 +25,11 @@ export const isLogin = (): boolean => {
 }
 
 export const signOut = (): void => {
-  localStorage.setItem('token', '')
+  localStorage.removeItem('token')
   localStorage.removeItem('uid')
   localStorage.removeItem('OPEN_KEYS')
   localStorage.removeItem('userInfo')
+  localStorage.removeItem('THEME_TYPE')
 }
 
 export const getParentKeyMap = (menuItem: AppManageType.MenuItem, breadcrumbMap: Array<AppManageType.BreadcrumbInterface>, parentName = ''): void => {

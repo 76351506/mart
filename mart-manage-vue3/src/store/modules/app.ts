@@ -2,7 +2,7 @@
  * @Author: heinan
  * @Date: 2023-06-24 16:19:28
  * @Last Modified by: heinan
- * @Last Modified time: 2023-07-04 19:04:44
+ * @Last Modified time: 2023-07-04 22:53:54
  */
 import { IPayload } from '@/interface/store'
 import { AppManageType } from '@/interface/model/app'
@@ -22,11 +22,12 @@ export default {
     loading: false,
     breadcrumbMap: [],
     openKeys: JSON.parse(getStorage('OPEN_KEYS') as string) || [],
-    themeType: getStorage('THEME_TYPE') ? true : false
+    themeType: localStorage.getItem('THEME_TYPE') === null ? true : JSON.parse(getStorage('THEME_TYPE') as string)
   },
   mutations: {
     UPDATE_THEME_TYPE(state: IAPPSTATE, { payload }: IPayload): void {
       state.themeType = payload
+      console.log(typeof payload)
       setStorage('THEME_TYPE', payload)
     },
     UPDATE_SELECTED_KEYS(state: IAPPSTATE, { payload }: IPayload): void {

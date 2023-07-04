@@ -60,7 +60,7 @@ export default defineComponent({
     const onThemeChange = (value: boolean) => {
       console.log(value)
       store.commit({ type: 'app/UPDATE_THEME_TYPE', payload: value })
-      darkThemeSwitch()
+      darkThemeSwitch(value)
     }
     const changThemeColor = (color: string) => {
       state.primaryColor.value = color
