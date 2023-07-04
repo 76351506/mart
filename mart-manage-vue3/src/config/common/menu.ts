@@ -88,6 +88,31 @@ const menuConfig: Array<AppManageType.MenuItemForSider> = [
         title: '商品列表'
       }
     ]
+  },
+  {
+    key: 'sub5',
+    icon: 'DeploymentUnitOutlined',
+    title: '数据可视化',
+    children: [
+      {
+        icon: 'PieChartOutlined',
+        key: 'pieCharts',
+        name: 'PieCharts',
+        title: '饼图'
+      },
+      {
+        icon: 'BarChartOutlined',
+        key: 'barCharts',
+        name: 'BarCharts',
+        title: '柱状图'
+      },
+      {
+        icon: 'LineChartOutlined',
+        key: 'lineCharts',
+        name: 'LineCharts',
+        title: '折线图'
+      }
+    ]
   }
 ]
 

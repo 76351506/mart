@@ -12,6 +12,10 @@
   <DownOutlined v-else-if="iconType === 'DownOutlined'" :style="style" />
   <BranchesOutlined v-else-if="iconType === 'BranchesOutlined'" :style="style" />
   <IdcardOutlined v-else-if="iconType === 'IdcardOutlined'" :style="style" />
+  <PieChartOutlined v-else-if="iconType === 'PieChartOutlined'" :style="style" />
+  <BarChartOutlined v-else-if="iconType === 'BarChartOutlined'" :style="style" />
+  <LineChartOutlined v-else-if="iconType === 'LineChartOutlined'" :style="style" />
+  <DeploymentUnitOutlined v-else-if="iconType === 'DeploymentUnitOutlined'" :style="style" />
 </template>
 
 <script lang="ts">
@@ -28,7 +32,11 @@ import {
   ShopOutlined,
   LoadingOutlined,
   BranchesOutlined,
-  IdcardOutlined
+  IdcardOutlined,
+  PieChartOutlined,
+  BarChartOutlined,
+  LineChartOutlined,
+  DeploymentUnitOutlined
 } from '@ant-design/icons-vue'
 import { defineComponent } from 'vue'
 export default defineComponent({
@@ -46,7 +54,11 @@ export default defineComponent({
     PlusOutlined,
     ShareAltOutlined,
     BranchesOutlined,
-    IdcardOutlined
+    IdcardOutlined,
+    PieChartOutlined,
+    BarChartOutlined,
+    LineChartOutlined,
+    DeploymentUnitOutlined
   },
   props: {
     iconType: {
