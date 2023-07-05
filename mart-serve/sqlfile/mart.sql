@@ -31,10 +31,11 @@ CREATE TABLE IF NOT EXISTS `address` (
   PRIMARY KEY  (`aid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 正在导出表  mart.address 的数据：~7 rows (大约)
+-- 正在导出表  mart.address 的数据：~8 rows (大约)
 DELETE FROM `address`;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
 INSERT INTO `address` (`aid`, `auser`, `mobile`, `province`, `city`, `county`, `street`, `uid`) VALUES
+	('3e6a6a2b32d6c41c7d8e', 'heinan', '13031061118', '北京市', '县', '门头沟区', '123', '415c5c2bb32e40812b01'),
 	('4f6bdae618bda0cc9913', 'heinan', '13031061118', '北京', '北京市', '海淀区', '八维教育', '5af71c518b36c91f4cfe'),
 	('5d059e2d69e51d1855f6', '骨灰盒', '13465754566', '天津市', '县', '河东区', '县西城区可以发育搞一搞', '5f13db6cd93c32dfb37e'),
 	('7300cd5d224a0bacb9cf', 'heinna', '13031071118', '北京市', '县', '东城区', 'sfsdf sd', 'db2ad7d1f211f42225d3'),
@@ -43,6 +44,25 @@ INSERT INTO `address` (`aid`, `auser`, `mobile`, `province`, `city`, `county`, `
 	('e7d90ad2f2804a51c8f9', '黑楠', '13031061118', '北京', '北京市', '海淀区', '八维教育', '5af71c518b36c91f4cfe'),
 	('f2581a09b6a67b6702d7', 'caca', '13203970970', '安徽省', '芜湖市', '庐阳区', 'cun 275114', '2c9bffbb9765135af6eb');
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
+
+-- 导出  表 mart.article 结构
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE IF NOT EXISTS `article` (
+  `aid` char(36) NOT NULL,
+  `title` char(50) NOT NULL,
+  `author` varchar(20) NOT NULL,
+  `sentence` varchar(500) NOT NULL,
+  `create_time` char(50) NOT NULL default '',
+  `publish_time` char(50) NOT NULL default '',
+  `status` int(11) NOT NULL default '0' COMMENT '0 未发布 1 已发布'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章列表';
+
+-- 正在导出表  mart.article 的数据：~0 rows (大约)
+DELETE FROM `article`;
+/*!40000 ALTER TABLE `article` DISABLE KEYS */;
+INSERT INTO `article` (`aid`, `title`, `author`, `sentence`, `create_time`, `publish_time`, `status`) VALUES
+	('a98e455dbc3a44468790', '测试文章1', 'heinan', '优美文章', '123', '123', 0);
+/*!40000 ALTER TABLE `article` ENABLE KEYS */;
 
 -- 导出  表 mart.avatar 结构
 DROP TABLE IF EXISTS `avatar`;
@@ -149,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `login` (
   PRIMARY KEY  (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户登录';
 
--- 正在导出表  mart.login 的数据：~4 rows (大约)
+-- 正在导出表  mart.login 的数据：~1 rows (大约)
 DELETE FROM `login`;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
 INSERT INTO `login` (`uid`, `username`, `password`, `identity_id`, `mobile`) VALUES
@@ -200,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY  (`pid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品表';
 
--- 正在导出表  mart.product 的数据：~4 rows (大约)
+-- 正在导出表  mart.product 的数据：~21 rows (大约)
 DELETE FROM `product`;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` (`pid`, `pname`, `imgUrl`, `sales`, `original_price`, `sale_price`, `mode`, `s_type`, `t_type`, `cid`, `carousel`, `desc`) VALUES
@@ -219,9 +239,11 @@ INSERT INTO `product` (`pid`, `pname`, `imgUrl`, `sales`, `original_price`, `sal
 	('8767cc1f78e41b5d4536', '大火炬', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3510060093,3714106924&fm=26&gp=0.jpg', '1', '3', '2.5', '直销', 8, 2, NULL, 'http://localhost:7001/public/upload/9f414c98acb1c98b2cb629b283cd898b.jpg', '真好吃0.0'),
 	('98541c4f23bc328de193', '测试商品', 'https://ms.bdimg.com/dsp-image/3250962582.jpg', '9999', '9999', '8888', '直销', 1, 1, NULL, NULL, '测试商品'),
 	('a9e62de25e99a6b6e814', '测试商品', 'https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1854538955,2155541042&fm=26&gp=0.jpg', '9999', '9999', '8888', '直销', 1, 1, NULL, NULL, '测试商品'),
+	('b15c054fb75d7e9f3e12', '香百年', 'https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3651310629,4261557813&fm=26&gp=0.jpg', '9999', '235', '199', '直销', 1, 0, NULL, 'http://localhost:7001/public/upload/ea72ddb3f780070b3290d7f940aefbb3.webp', '就那样吧'),
 	('b53001029e6de2f41c76', '测试商品', 'https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1854538955,2155541042&fm=26&gp=0.jpg', '9999', '9999', '8888', '直销', 1, 1, NULL, NULL, '测试商品'),
 	('cbab0bf4d792d3a87a68', '测试商品', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3510060093,3714106924&fm=26&gp=0.jpg', '9999', '9999', '8888', '直销', 1, 1, NULL, NULL, '测试商品'),
 	('d003aa692ead114e6807', '测试商品', 'https://ms.bdimg.com/dsp-image/3250962582.jpg', '9999', '9999', '8888', '直销', 1, 1, NULL, NULL, '测试商品'),
+	('e683ad22292efa7e2d6f', '大宝SOD密', 'https://ms.bdimg.com/dsp-image/3250962582.jpg', '9999', '6', '18', '直销', 1, 3, NULL, 'http://localhost:7001/public/upload/a96ce699c345af04948ec74d4e9c2e52.jpg', '大宝sod蜜挺好的，真情永不变，天天见！'),
 	('ee9822fb22cffc980397', '测试商品', 'https://ms.bdimg.com/dsp-image/3250962582.jpg', '9999', '9999', '8888', '直销', 1, 1, NULL, NULL, '测试商品');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 
@@ -271,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `type` (
   `t_text` char(20) default NULL COMMENT '一级分类',
   `t_type` int(11) default NULL COMMENT '一级分类标识 ',
   PRIMARY KEY  (`tid`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='分类表';
 
 -- 正在导出表  mart.type 的数据：~4 rows (大约)
 DELETE FROM `type`;
@@ -3574,7 +3596,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY  (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 
--- 正在导出表  mart.user 的数据：~3 rows (大约)
+-- 正在导出表  mart.user 的数据：~1 rows (大约)
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`uid`, `nickname`, `graph`, `avatar`, `email`, `mobile`) VALUES
