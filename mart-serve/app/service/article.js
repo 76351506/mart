@@ -2,7 +2,7 @@
  * @Author: heinan
  * @Date: 2020-07-15 10:23:53
  * @Last Modified by: heinan
- * @Last Modified time: 2023-07-05 10:37:06
+ * @Last Modified time: 2023-07-05 16:30:48
  */
 "use strict";
 
@@ -21,7 +21,7 @@ class ArticleService extends Service {
   }
 
   async add({ title, author, sentence, create_time, publish_time, status }) {
-    const aid = idCreator(title).slice(0, 20);
+    const aid = idCreator().slice(0, 20);
     const $params = [
       aid,
       title,

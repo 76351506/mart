@@ -1,8 +1,8 @@
 /*
  * @Author: heinan 
  * @Date: 2020-07-14 10:08:28 
- * @Last Modified by: HuangChao
- * @Last Modified time: 2020-10-13 17:08:04
+ * @Last Modified by: heinan
+ * @Last Modified time: 2023-07-05 16:29:48
  */
 'use strict';
 
@@ -13,7 +13,7 @@ const sha256 = require('crypto-js/sha256');
 const jsonwebtoken = require('jsonwebtoken');
 const { PWD_KEYGEN } = require('../config');
 
-module.exports.idCreator = function (name) {
+module.exports.idCreator = function (name="") {
   const id = JSON.stringify({
     name,
     tim: new Date().getTime(),

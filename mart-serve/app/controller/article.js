@@ -22,6 +22,7 @@ class ArticleController extends Controller {
   }
 
   async add() {
+    console.log(this.ctx.request.body)
     const result = await this.service.article.add(this.ctx.request.body);
     if (result.affectedRows > 0) {
       this.ctx.body = {
