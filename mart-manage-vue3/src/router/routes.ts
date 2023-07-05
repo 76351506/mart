@@ -2,7 +2,7 @@
  * @Author: heinan
  * @Date: 2023-06-25 16:31:12
  * @Last Modified by: heinan
- * @Last Modified time: 2023-06-28 09:13:35
+ * @Last Modified time: 2023-07-05 09:25:58
  */
 import { RouteRecordRaw } from 'vue-router'
 import { UserManage, UserLogin, UserRegistry, UserIdentity, UserInfo, UserList } from './routes/user'
@@ -75,18 +75,23 @@ export default [
     path: '/visual/pie',
     name: 'VisualPieCharts',
     meta: { requireAuth: true },
-    component: () => import(/* webpackChunkName: "Home" */ '@/views/visual/pie.vue')
+    component: () => import(/* webpackChunkName: "VisualPieCharts" */ '@/views/visual/pie.vue')
   },
   {
     path: '/visual/bar',
     name: 'VisualBarCharts',
     meta: { requireAuth: true },
-    component: () => import(/* webpackChunkName: "Home" */ '@/views/visual/bar.vue')
+    component: () => import(/* webpackChunkName: "VisualBarCharts" */ '@/views/visual/bar.vue')
   },
   {
     path: '/visual/line',
     name: 'VisualLineCharts',
     meta: { requireAuth: true },
-    component: () => import(/* webpackChunkName: "Home" */ '@/views/visual/line.vue')
+    component: () => import(/* webpackChunkName: "VisualLineCharts" */ '@/views/visual/line.vue')
+  },
+  {
+    path: '/article/list',
+    name: 'ArticleList',
+    component: () => import(/* webpackChunkName: "ArticleList" */ '@/views/article/index.vue')
   }
 ] as Array<RouteRecordRaw>

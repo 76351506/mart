@@ -113,6 +113,19 @@ const menuConfig: Array<AppManageType.MenuItemForSider> = [
         title: '折线图'
       }
     ]
+  },
+  {
+    key: 'sub6',
+    icon: 'DeploymentUnitOutlined',
+    title: '文章管理',
+    children: [
+      {
+        icon: 'PieChartOutlined',
+        key: 'articelList',
+        name: 'ArticleList',
+        title: '文章列表'
+      }
+    ]
   }
 ]
 

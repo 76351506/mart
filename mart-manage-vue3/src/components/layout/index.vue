@@ -8,7 +8,7 @@
         <img :src="require('@/assets/images/logo.png')" alt="" srcset="" />
       </div>
       <div :class="!collapsed ? 'slider-collapsed' : 'slider-collapsed small'">
-        <MenuUnfoldOutlined @click="onCollapsed" style="color: #fff; font-size: 18px" />
+        <MenuUnfoldOutlined @click="onCollapsed" style="font-size: 18px" />
       </div>
       <LayoutSider></LayoutSider>
     </a-layout-sider>

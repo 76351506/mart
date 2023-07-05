@@ -10,9 +10,11 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@wangeditor/editor-for-vue": "^5.1.12",
     "ant-design-vue": "2.2.8",
     "axios": "^1.4.0",
     "babel-plugin-import": "^1.13.6",
+    "body-parser": "^1.20.2",
     "core-js": "^3.8.3",
     "echarts": "^5.4.2",
     "moment": "^2.29.4",
