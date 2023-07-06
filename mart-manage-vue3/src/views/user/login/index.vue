@@ -25,7 +25,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { ref, defineComponent, computed, toRaw } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
@@ -36,56 +36,41 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 import { message } from 'ant-design-vue'
 import { getStorage } from '@/utils/common'
 
-export default defineComponent({
-  name: 'UserLogin',
-  components: {
-    UserOutlined,
-    LockOutlined
+const store = useStore()
+const route = useRoute()
+const userService = useUserService()
+const state = {
+  formRef: ref(),
+  formState: ref<UserManageType.LoginFormState>(new UserManageType.LoginFormState()),
+  rules: {
+    username: [{ required: true, message: '请输入用户名', trigger: 'change' }],
+    password: [{ required: true, message: '请输入用密码', trigger: 'change' }]
   },
-  setup() {
-    const store = useStore()
-    const route = useRoute()
-    const userService = useUserService()
-    const state = {
-      formRef: ref(),
-      formState: ref<UserManageType.LoginFormState>(new UserManageType.LoginFormState()),
-      rules: {
-        username: [{ required: true, message: '请输入用户名', trigger: 'change' }],
-        password: [{ required: true, message: '请输入用密码', trigger: 'change' }]
-      },
-      token: computed(() => {
-        return store.state.user.token
-      })
-    }
+  token: computed(() => {
+    return store.state.user.token
+  })
+}
 
-    const onSubmit = async (): Promise<void> => {
-      state.formRef.value
-        .validate()
-        .then(async (): Promise<void> => {
-          const result = await userService.login(toRaw(state.formState.value))
-          if (!result.code) return message.error(result.msg)
-          store.dispatch({ type: 'user/SAVE_USER_TOKEN', payload: result.token })
+const onSubmit = async (): Promise<void> => {
+  state.formRef.value
+    .validate()
+    .then(async (): Promise<void> => {
+      const result = await userService.login(toRaw(state.formState.value))
+      if (!result.code) return message.error(result.msg)
+      store.dispatch({ type: 'user/SAVE_USER_TOKEN', payload: result.token })
 
-          const user = await userService.getUserIdByToken(getStorage('token') as string)
-          store.commit({ type: 'user/SAVE_UID', payload: user.uid })
-          if (!route.query.redirect) {
-            window.location.href = '/'
-          } else {
-            window.location.href = `${decodeURIComponent(route.query.redirect as string)}`
-          }
-        })
-        .catch((error: ValidateErrorEntity<any>) => {
-          console.error(error)
-        })
-    }
-
-    return {
-      ...state,
-      store,
-      onSubmit
-    }
-  }
-})
+      const user = await userService.getUserIdByToken(getStorage('token') as string)
+      store.commit({ type: 'user/SAVE_UID', payload: user.uid })
+      if (!route.query.redirect) {
+        window.location.href = '/'
+      } else {
+        window.location.href = `${decodeURIComponent(route.query.redirect as string)}`
+      }
+    })
+    .catch((error: ValidateErrorEntity<any>) => {
+      console.error(error)
+    })
+}
 </script>
 
 <style lang="less">
