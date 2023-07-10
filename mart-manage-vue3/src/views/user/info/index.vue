@@ -70,7 +70,6 @@ export default defineComponent({
         .validate()
         .then(async (): Promise<void> => {
           const result = await userService.updateUser(state.formState.value)
-          console.log(result)
           // 成功失败都从服务端重新获取用户信息
           if (result.code) {
             message.success(result.msg, 1, getUserInfo)
@@ -78,7 +77,7 @@ export default defineComponent({
             message.error(result.msg, 1, getUserInfo)
           }
         })
-        .catch((error: ValidateErrorEntity<any>) => {
+        .catch((error: ValidateErrorEntity<UserManageType.LoginFormState>) => {
           console.error(error)
         })
     }

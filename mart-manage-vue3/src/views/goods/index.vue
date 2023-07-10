@@ -48,8 +48,8 @@ import { UseGoodsService } from '@/api/goods'
 import { GoodsManageType } from '@/interface/model/goods'
 import { useStore } from 'vuex'
 import { message } from 'ant-design-vue'
+import { ValidateErrorEntity } from 'ant-design-vue/es/form/interface'
 import GoodsForm from './form.vue'
-
 export default defineComponent({
   name: 'GoodsManage',
   components: {
@@ -70,7 +70,7 @@ export default defineComponent({
             .then(() => {
               onUpdate()
             })
-            .catch((err: any) => {
+            .catch((err: ValidateErrorEntity<GoodsManageType.GoodsForm>) => {
               console.error(err)
             })
         },

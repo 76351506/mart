@@ -2,7 +2,7 @@
  * @Author: heinan
  * @Date: 2023-06-25 17:17:33
  * @Last Modified by: heinan
- * @Last Modified time: 2023-07-04 16:51:00
+ * @Last Modified time: 2023-07-10 11:16:51
  */
 import { request } from '@/utils/request'
 import { API_CAROUSEL } from '@/config/api/carousel'

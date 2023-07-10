@@ -51,7 +51,7 @@ export default defineComponent({
             .then(() => {
               update()
             })
-            .catch((err: any) => {
+            .catch((err: string) => {
               console.error(err)
             })
         },

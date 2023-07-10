@@ -34,8 +34,9 @@ import { useStore } from 'vuex'
 import { useArticleService } from '@/api/article'
 import { defineComponent, onMounted, ref } from 'vue'
 import { ArticleManageType } from '@/interface/model/article'
-import AricleForm from './form.vue'
 import { message } from 'ant-design-vue'
+import { ValidateErrorEntity } from 'ant-design-vue/es/form/interface'
+import AricleForm from './form.vue'
 
 export default defineComponent({
   name: 'AricleList',
@@ -63,7 +64,7 @@ export default defineComponent({
                 })
               }
             })
-            .catch((err: any) => {
+            .catch((err: ValidateErrorEntity<ArticleManageType.ArticleForm>) => {
               console.error(err)
             })
         },

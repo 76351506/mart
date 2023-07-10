@@ -48,6 +48,7 @@ import { useCarouselService } from '@/api/carousel'
 import { CarouselManageType } from '@/interface/model/carousel'
 import { useStore } from 'vuex'
 import { message } from 'ant-design-vue'
+import { ValidateErrorEntity } from 'ant-design-vue/es/form/interface'
 import CarouselForm from './form.vue'
 
 export default defineComponent({
@@ -70,7 +71,7 @@ export default defineComponent({
             .then(() => {
               update()
             })
-            .catch((err: any) => {
+            .catch((err: ValidateErrorEntity<CarouselManageType.CarouselForm>) => {
               console.error(err)
             })
         },

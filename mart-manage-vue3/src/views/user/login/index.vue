@@ -56,7 +56,6 @@ const onSubmit = async (): Promise<void> => {
       const result = await userService.login(toRaw(formState.value))
       if (!result.code) return message.error(result.msg)
       store.dispatch({ type: 'user/SAVE_USER_TOKEN', payload: result.token })
-
       const user = await userService.getUserIdByToken(getStorage('token') as string)
       store.commit({ type: 'user/SAVE_UID', payload: user.uid })
       if (!route.query.redirect) {
@@ -65,7 +64,7 @@ const onSubmit = async (): Promise<void> => {
         window.location.href = `${decodeURIComponent(route.query.redirect as string)}`
       }
     })
-    .catch((error: ValidateErrorEntity<any>) => {
+    .catch((error: ValidateErrorEntity<UserManageType.LoginFormState>) => {
       console.error(error)
     })
 }
@@ -87,8 +86,6 @@ const onSubmit = async (): Promise<void> => {
   box-sizing: border-box;
   & > .login-head {
     height: 100px;
-  }
-  & > .login-body {
   }
 }
 </style>
