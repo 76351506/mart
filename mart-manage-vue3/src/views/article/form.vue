@@ -62,7 +62,7 @@ export default defineComponent({
         status: [{ required: true, message: '请选择发布状态' }]
       }
     }
-    const handleCreated = editor => {
+    const handleCreated = (editor: unknown) => {
       state.editorRef.value = editor // 记录 editor 实例，重要！
     }
 

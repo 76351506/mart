@@ -43,8 +43,7 @@ export default defineComponent({
       state.charts.value.setOption(option)
     }
     const createDynamicSort = () => {
-      // @ts-ignore
-      const data = []
+      const data: any[] = []
       for (let i = 0; i < 5; ++i) {
         data.push(Math.round(Math.random() * 200))
       }
