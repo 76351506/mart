@@ -38,7 +38,7 @@ import { ArticleManageType } from '@/interface/model/article'
 export default defineComponent({
   name: 'AricleForm',
   components: { Editor, Toolbar },
-  setup(props) {
+  setup() {
     const store = useStore()
     const state = {
       mode: 'default',
@@ -62,7 +62,7 @@ export default defineComponent({
         status: [{ required: true, message: '请选择发布状态' }]
       }
     }
-    const handleCreated = (editor: any) => {
+    const handleCreated = editor => {
       state.editorRef.value = editor // 记录 editor 实例，重要！
     }
 

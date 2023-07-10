@@ -57,7 +57,7 @@ export default defineComponent({
       return false
     }
     // 上传文件的回调
-    const handleChange = async (info: any) => {
+    const handleChange = async (info: { file: File }) => {
       const formData = new FormData()
       formData.append('file', info.file)
       const result = await userService.upload(formData, store.state.user.uid)
