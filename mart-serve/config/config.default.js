@@ -2,7 +2,7 @@
  * @Author: heinan 
  * @Date: 2020-07-15 16:51:55 
  * @Last Modified by: heinan
- * @Last Modified time: 2023-07-05 15:03:11
+ * @Last Modified time: 2023-07-10 10:32:04
  */
 'use strict';
 const { ROUTER_WHITE_LIST } = require('../app/config');
@@ -27,7 +27,7 @@ module.exports = appInfo => {
         host: '127.0.0.1',
         port: '3306',
         user: 'root',
-        password: '12344321',
+        password: '123456',
         database: 'mart',
       },
       app: true,
