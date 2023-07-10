@@ -39,23 +39,21 @@ import { getStorage } from '@/utils/common'
 const store = useStore()
 const route = useRoute()
 const userService = useUserService()
-const state = {
-  formRef: ref(),
-  formState: ref<UserManageType.LoginFormState>(new UserManageType.LoginFormState()),
-  rules: {
-    username: [{ required: true, message: '请输入用户名', trigger: 'change' }],
-    password: [{ required: true, message: '请输入用密码', trigger: 'change' }]
-  },
-  token: computed(() => {
-    return store.state.user.token
-  })
+const formRef = ref()
+const formState = ref<UserManageType.LoginFormState>(new UserManageType.LoginFormState())
+const rules = {
+  username: [{ required: true, message: '请输入用户名', trigger: 'change' }],
+  password: [{ required: true, message: '请输入用密码', trigger: 'change' }]
 }
+const token = computed(() => {
+  return store.state.user.token
+})
 
 const onSubmit = async (): Promise<void> => {
-  state.formRef.value
+  formRef.value
     .validate()
     .then(async (): Promise<void> => {
-      const result = await userService.login(toRaw(state.formState.value))
+      const result = await userService.login(toRaw(formState.value))
       if (!result.code) return message.error(result.msg)
       store.dispatch({ type: 'user/SAVE_USER_TOKEN', payload: result.token })
 
